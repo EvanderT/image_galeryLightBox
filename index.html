@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Imagens</title>
+    <link rel="stylesheet" type="text/css" href="css/lightbox.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <section class="project">
+            <div class="project-heading">
+                <h3>Nossos Projectos</h3>
+                <hr>
+            </div>
+        </section>
+
+        <!--Filter-->
+        <ul class="project-filter">
+            <li class="list project-filter-active" data-filter="all">Todos</li>
+            <li class="list" data-filter="app">Aplicação</li>
+            <li class="list" data-filter="web">Desenho de Website</li>
+            <li class="list" data-filter="design">Desenho de Aplicações</li>
+            <li class="list" data-filter="ai">AI</li>
+        </ul>
+
+        <div class="project-container">
+            <a href="images/01.png" class="project-box app" data-lightbox="work">
+                <img src="images/01.png">
+            </a>
+            <a href="images/02.png" class="project-box web" data-lightbox="work">
+                <img src="images/02.png">
+            </a>
+            <a href="images/03.png" class="project-box design" data-lightbox="work">
+                <img src="images/03.png">
+            </a>
+            <a href="images/04.png" class="project-box ai" data-lightbox="work">
+                <img src="images/04.png">
+            </a>
+            <a href="images/05.png" class="project-box app" data-lightbox="work">
+                <img src="images/05.png">
+            </a>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.6.min.js"></script>
+    <script src="js/lightbox.js"></script>
+
+    <script>
+        //Filter menu class change
+        $(document).on('click', '.project-filter li', function () {
+            $(this).addClass('project-filter-active').siblings().removeClass('project-filter-active');
+        });
+
+        //Project Filter
+        $(document).ready(function(){
+            $('.list').click(function(){
+                const value = $(this).attr('data-filter');
+                if(value == "all"){
+                    $('.project-box').show('1000')
+                }
+                else{
+                    $('.project-box').not('.'+value).hide('1000');
+                    $('.project-box').filter('.'+value).show('1000');
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
